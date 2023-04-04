@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="../styles/reset.css" />
+		<link rel="stylesheet" href="../styles/animations.css" />
+		<link rel="stylesheet" href="../styles/sidebar-menu.css" />
+		<link rel="stylesheet" href="../styles/modal.css" />
+		<link rel="stylesheet" href="../styles/all-boards.css">
+
+		<title>DM Kanban - Quadro</title>
+	</head>
+
+	<body>
+		<header id="board--header">
+			<img class="logo" src="../assets/logo.png">
+		</header>
+
+		<button id="menu--button__open">
+			<img src="../assets/icons/menu.png" alt="Menu lateral" title="Abrir menu lateral" />
+		</button>
+
+		<menu id="sidebar-menu" class="menu--container">
+			<nav class="menu">
+				<header class="menu--header">
+					<div class="menu--header__top">
+						<section>
+							<h2 id="user-username">Kenji Animadinho</h2>
+							<p id="user-email">kenji@email.com</p>
+						</section>
+						<img id="closeMenuButton" src="../assets/icons/close.png"
+							alt="Fechar menu"
+						/>
+					</div>
+					<div class="menu--header__account">
+						<a id="mudar-email" href="#">
+							<img
+								src="../assets/icons/mail_FILL0_wght400_GRAD0_opsz48.svg"
+								alt=""
+							/>
+							Alterar e-mail
+						</a>
+						<a id="mudar-senha" href="#">
+							<img
+								src="../assets/icons/lock_reset_FILL0_wght400_GRAD0_opsz48.svg"
+								alt=""
+							/>
+							Alterar senha
+						</a>
+						<a id="excluir-conta" href="#">
+							<img src="../assets/icons/delete.png" alt="" />
+							Excluir conta
+						</a>
+						<a href="#" id="sair">
+							<img
+								src="../assets/icons/logout_FILL0_wght400_GRAD0_opsz48 (1).svg"
+								alt=""
+							/>
+							Sair
+						</a>
+					</div>
+				</header>
+			</nav>
+		</menu>
+
+		<main id="all-boards__container">
+			<h2>Seus quadros</h2>
+
+			<form>
+				<input
+					type="text"
+					name=""
+					id="input-quadro"
+					placeholder="Novo quadro"
+				/>
+				<button id="criar-quadro">Criar</button>
+			</form>
+
+			<ul id="all-boards__list">
+				<li class="all-boards--list__item">
+					<p>Nome exemplo</p>
+					<img src="../assets/icons/edit_FILL0_wght400_GRAD0_opsz48 (1).svg" alt="">
+				</li>
+				<li class="all-boards--list__item">
+					<p>Nome exemplo</p>
+					<img src="../assets/icons/edit_FILL0_wght400_GRAD0_opsz48 (1).svg" alt="">
+				</li>
+				<li class="all-boards--list__item">
+					<p>Nome exemplo</p>
+					<img src="../assets/icons/edit_FILL0_wght400_GRAD0_opsz48 (1).svg" alt="">
+				</li>
+				<li class="all-boards--list__item">
+					<p>Nome exemplo</p>
+					<img src="../assets/icons/edit_FILL0_wght400_GRAD0_opsz48 (1).svg" alt="">
+				</li>
+				<li class="all-boards--list__item">
+					<p>Nome exemplo</p>
+					<img src="../assets/icons/edit_FILL0_wght400_GRAD0_opsz48 (1).svg" alt="">
+				</li>
+				<li class="all-boards--list__item">
+					<p>Nome exemplo</p>
+					<img src="../assets/icons/edit_FILL0_wght400_GRAD0_opsz48 (1).svg" alt="">
+				</li>
+			</ul>
+		</main>
+
+		<!-- --------------- MODAIS --------------- -->
+
+		<div id="modal--delete-account__container">
+			<div id="modal--delete-account">
+				<h2 id="modal--delete-account__title">AVISO</h2>
+
+				<p id="modal--delete-account__text">
+					Ao excluir sua conta, você não poderá mais acessar os
+					projetos dos quais faz parte.
+				</p>
+
+				<button id="modal--delete-account__button">Excluir</button>
+			</div>
+		</div>
+
+		<div id="modal--change-password__container">
+			<div id="modal--change-password">
+				<h2 id="modal--change-password__title">Alterar senha</h2>
+
+				<form id="modal--change-password__form">
+					<div>
+						<input
+							required
+							type="password"
+							placeholder="Nova senha"
+							id="modal--change-password__new-pass"
+						/>
+						<input
+							required
+							type="password"
+							placeholder="Confirme a nova senha"
+							id="modal--change-password__repeat-new-pass"
+						/>
+					</div>
+					<button id="modal--change-password__button">Alterar</button>
+				</form>
+			</div>
+		</div>
+
+		<div id="modal--change-email__container">
+			<div id="modal--change-email">
+				<h2 id="modal--change-email__title">Alterar email</h2>
+
+				<form id="modal--change-email__form">
+					<input
+						required
+						id="modal--change-email__new-email"
+						type="email"
+						placeholder="Novo e-mail"
+					/>
+					<input
+						required
+						id="modal--change-email__repeat-new-email"
+						type="email"
+						placeholder="Confirme o novo e-mail"
+					/>
+
+					<button id="modal--change-email__button">Alterar</button>
+				</form>
+			</div>
+		</div>
+
+		<script type="module" src="../scripts/all-boards.js"></script>
+	</body>
+</html>

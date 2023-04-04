@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="../styles/reset.css" />
+		<link rel="stylesheet" href="../styles/animations.css" />
+		<link rel="stylesheet" href="../styles/sidebar-menu.css" />
+		<link rel="stylesheet" href="../styles/modal.css" />
+		<link rel="stylesheet" href="../styles/board.css" />
+		<script type="module" defer src="../scripts/board.js"></script>
+
+		<title>DM Kanban - Quadro</title>
+	</head>
+
+	<body>
+		<header id="board--header">
+			<img class="logo" src="../assets/logo.png" />
+			<input
+				class="title-1"
+				type="text"
+				id="nome-projeto"
+				value="Novo quadro"
+			/>
+		</header>
+
+		<button id="menu--button__open">
+			<img
+				src="../assets/icons/menu.png"
+				alt="Menu lateral"
+				title="Abrir menu lateral"
+			/>
+		</button>
+
+		<menu id="sidebar-menu" class="menu--container">
+			<nav class="menu">
+				<header class="menu--header">
+					<div class="menu--header__top">
+						<section>
+							<h2 id="user-username">Kenji Animadinho</h2>
+							<p id="user-email">kenji@email.com</p>
+						</section>
+						<img
+							id="closeMenuButton"
+							src="../assets/icons/close.png"
+							alt="Fechar menu"
+						/>
+					</div>
+					<div class="menu--header__account">
+						<a id="mudar-email" href="#">
+							<img
+								src="../assets/icons/mail_FILL0_wght400_GRAD0_opsz48.svg"
+								alt=""
+							/>
+							Alterar e-mail
+						</a>
+						<a id="mudar-senha" href="#">
+							<img
+								src="../assets/icons/lock_reset_FILL0_wght400_GRAD0_opsz48.svg"
+								alt=""
+							/>
+							Alterar senha
+						</a>
+						<a id="excluir-conta" href="#">
+							<img src="../assets/icons/delete.png" alt="" />
+							Excluir conta
+						</a>
+						<a href="#" id="sair">
+							<img
+								src="../assets/icons/logout_FILL0_wght400_GRAD0_opsz48 (1).svg"
+								alt=""
+							/>
+							Sair
+						</a>
+					</div>
+				</header>
+				<main class="menu--main">
+					<ul class="menu--main__accordion">
+						<li class="menu--accordion__item" id="your-boards">
+							<span id="your-boards__title">
+								<a href="#your-boards" class="item__title">
+									Seus quadros
+								</a>
+								<img
+									src="../assets/icons/add.png"
+									id="your-boards__new-board-button"
+									alt="Criar novo quadro"
+								/>
+							</span>
+							<hr />
+
+							<ul
+								class="menu--accordion__item-content"
+								id="lista-de-projetos"
+							>
+								<li
+									class="menu--accordion__sub-item"
+									id="add-projetos"
+								>
+									<form>
+										<label for="name">Criar quadro</label>
+										<div>
+											<input
+												type="text"
+												name="name"
+												id="input-quadro"
+												placeholder="Nome do quadro"
+											/>
+											<button id="criar-quadro">
+												Criar
+											</button>
+										</div>
+									</form>
+								</li>
+								<!--
+									<li class="menu--accordion__sub-item this-board__item">
+										<button>Quadro 1</button>
+									</li>
+								-->
+							</ul>
+						</li>
+					</ul>
+					<section id="projeto--membros" class="hidden">
+						<h3 id="this-board__title">Este quadro</h3>
+						<hr />
+
+						<ul class="menu--main__accordion">
+							<li class="menu--accordion__item" id="members">
+								<a
+									href="#members"
+									id="members-row"
+									class="item__title this-board__item"
+								>
+									<span>
+										<img
+											src="../assets/icons/group.png"
+											alt=""
+										/>
+										Participantes
+									</span>
+									<img
+										src="../assets/icons/add.png"
+										id="your-boards__new-board-button"
+										alt="Criar novo quadro"
+									/>
+								</a>
+
+								<ul
+									id="project-members-list"
+									class="menu--accordion__item-content"
+								>
+									<li
+										class="menu--accordion__sub-item"
+										id="add-member-form"
+									>
+										<form id="add-part-form">
+											<label for="email"
+												>Adicionar participante</label
+											>
+											<div>
+												<input
+													type="email"
+													name="email"
+													id="adicionar-participante"
+													placeholder="E-mail"
+												/>
+												<button
+													id="add-participante-button"
+												>
+													Adicionar
+												</button>
+											</div>
+										</form>
+									</li>
+								</ul>
+							</li>
+						</ul>
+						<a
+							href=""
+							class="this-board__item"
+							id="delete-board-button"
+						>
+							<img src="../assets/icons/delete.png" alt="" />
+							Excluir quadro
+						</a>
+					</section>
+				</main>
+			</nav>
+		</menu>
+
+		<div class="quadro"></div>
+
+		<!-- --------------- MODAIS --------------- -->
+
+		<div class="notifications hidden">
+			<p class="notification-text">
+				<span id="notifications-username"></span>
+				entrou
+			</p>
+		</div>
+
+		<div class="modal hidden">
+			<div class="card-modal hidden">
+				<main class="card-modal__main">
+					<input
+						class="title-1 card-modal__nome"
+						type="text"
+						placeholder="Nome do cartão"
+						value="Nome do cartão"
+					/>
+					<ul id="membros--lista-membros">
+						<li>Membro 1</li>
+						<li>membro 2</li>
+						<button class="add-member">+</button>
+						<button id="add-membro" class="adicionar-btn">+</button>
+					</ul>
+
+					<p>Descrição</p>
+					<textarea
+						class="card-modal__conteudo"
+						placeholder="Descrição da tarefa"
+					></textarea>
+				</main>
+				<aside class="card-modal__aside">
+					<header>
+						<h2 class="title-2">Configurações</h2>
+						<span class="close title-2">
+							<img
+								src="../assets/icons/close.png"
+								alt="Fechar card"
+							/>
+						</span>
+					</header>
+					<ul>
+						<li>
+							<select class="card-modal__move">
+								<option value="">Mover para</option>
+							</select>
+						</li>
+						<!-- <li>
+							<select class="card-modal__color">
+								<option value="">Mudar cor</option>
+								<option value="blue">Azul</option>
+								<option value="green">Verde</option>
+								<option value="yellow">Amarelo</option>
+								<option value="orange">Laranja</option>
+								<option value="pink0">Rosa claro</option>
+								<option value="pink1">Rosa</option>
+							</select>
+						</li> -->
+						<li>
+							<button class="deletar-card">Apagar cartão</button>
+						</li>
+					</ul>
+				</aside>
+			</div>
+
+			<div class="email-modal hidden">
+				<header>
+					<h2 class="title-2">Mudar seu e-mail</h2>
+					<span>X</span>
+				</header>
+				<input
+					class="text-2"
+					type="email"
+					id="input-email"
+					placeholder="Digite o novo e-mail"
+				/>
+				<button id="mudar-email-input">Enviar</button>
+			</div>
+		</div>
+
+		<div id="modal--delete-user-from-project__container">
+			<div id="modal--delete-user-from-project">
+				<h2 id="modal--delete-user-from-project__title">AVISO</h2>
+
+				<p id="modal--delete-user-from-project__text">
+					Ao excluir o usuário do projeto ele não poderá mais acessar
+					o projeto.
+				</p>
+
+				<button id="modal--delete-user-from-project__button">
+					Excluir
+				</button>
+			</div>
+		</div>
+
+		<div id="modal--delete-account__container">
+			<div id="modal--delete-account">
+				<h2 id="modal--delete-account__title">AVISO</h2>
+
+				<p id="modal--delete-account__text">
+					Ao excluir sua conta, você não poderá mais acessar os
+					projetos dos quais faz parte.
+				</p>
+
+				<button id="modal--delete-account__button">Excluir</button>
+			</div>
+		</div>
+
+		<div id="modal--change-password__container">
+			<div id="modal--change-password">
+				<h2 id="modal--change-password__title">Alterar senha</h2>
+
+				<form id="modal--change-password__form">
+					<div>
+						<input
+							required
+							type="password"
+							placeholder="Nova senha"
+							id="modal--change-password__new-pass"
+						/>
+						<input
+							required
+							type="password"
+							placeholder="Confirme a nova senha"
+							id="modal--change-password__repeat-new-pass"
+						/>
+					</div>
+					<button id="modal--change-password__button">Alterar</button>
+				</form>
+			</div>
+		</div>
+
+		<div id="modal--change-email__container">
+			<div id="modal--change-email">
+				<h2 id="modal--change-email__title">Alterar email</h2>
+
+				<form id="modal--change-email__form">
+					<input
+						required
+						id="modal--change-email__new-email"
+						type="email"
+						placeholder="Novo e-mail"
+					/>
+					<input
+						required
+						id="modal--change-email__repeat-new-email"
+						type="email"
+						placeholder="Confirme o novo e-mail"
+					/>
+
+					<button id="modal--change-email__button">Alterar</button>
+				</form>
+			</div>
+		</div>
+
+		<div id="modal--delete-board__container">
+			<div id="modal--delete-board">
+				<h2 id="modal--delete-board__title">Excluir quadro</h2>
+
+				<p id="modal--delete-board__text">
+					Tem certeza de que deseja excluir este quadro? As
+					informações nele contidas não poderão ser acessadas
+					novamente
+				</p>
+
+				<button id="modal--delete-board__button">Excluir</button>
+			</div>
+		</div>
+
+		<div id="modal--delete-card__container" class="hidden">
+			<div id="modal--delete-card">
+				<h2 id="modal--delete-card__title">AVISO</h2>
+
+				<p id="modal--delete-card__text">
+					Tem certeza que deseja excluir esse cartão?
+				</p>
+
+				<button id="modal--delete-card__button">Excluir</button>
+			</div>
+		</div>
+
+		<div id="modal--delete-column__container" class="hidden">
+			<div id="modal--delete-column">
+				<h2 id="modal--delete-column__title">AVISO</h2>
+
+				<p id="modal--delete-column__text">
+					Tem certeza que deseja excluir essa coluna?
+				</p>
+
+				<button id="modal--delete-column__button">Excluir</button>
+			</div>
+		</div>
+	</body>
+</html>

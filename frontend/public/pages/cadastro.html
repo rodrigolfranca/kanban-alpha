@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="stylesheet" href="../styles/reset.css" />
+		<link rel="stylesheet" href="../styles/style.css" />
+		<link rel="stylesheet" href="../styles/cadastro.css" />
+
+		<title>Alpha Multi - Kanban</title>
+	</head>
+
+	<body>
+		<header>
+			<img
+				src="../assets/logos/logo-dm-kanban.svg"
+				alt="Logo DM Kanban"
+			/>
+		</header>
+		<main>
+			<form>
+				<input
+					type="text"
+					id="cadastro-nome"
+					placeholder="Nome"
+					maxlength="25"
+				/>
+				<input type="email" id="cadastro-email" placeholder="E-mail" />
+				<input
+					type="password"
+					id="cadastro-senha"
+					placeholder="Senha"
+				/>
+				<input
+					type="password"
+					id="cadastro-conf-senha"
+					placeholder="Confirmar senha"
+				/>
+				<p
+				class="text-2 mensagem-erro-cadastro"
+				id="erro"
+				>
+					Senhas incompatíveis. Tente novamente
+				</p>
+				<button id="cadastro-button" type="button">Cadastrar</button>
+			</form>
+		</main>
+		<footer>
+			<p>Já é cadastrado?</p>
+			<a href="../index.html">Faça seu login aqui</a>
+		</footer>
+
+		<script type="module" src="../scripts/register.js"></script>
+	</body>
+</html>
